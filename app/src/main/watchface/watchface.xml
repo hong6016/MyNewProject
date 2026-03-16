@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Galaxy Watch 6 Classic - B Style Classic Watch Face
+  Target: Wear OS 4 / Watch Face Format (WFF)
+  Display: 450x450 round
+  Style: Minimal White - analog hands + photo background
+-->
+<WatchFace width="450" height="450">
+
+  <!-- ═══════════════════════════════════════
+       배경 레이어: 사진 + 어두운 오버레이
+  ═══════════════════════════════════════ -->
+  <Scene>
+
+    <!-- 배경 사진 (원형 크롭) -->
+    <PartImage x="0" y="0" width="450" height="450" alpha="255">
+      <Image resource="background"/>
+    </PartImage>
+
+    <!-- 어두운 반투명 오버레이 (가독성 향상) -->
+    <PartDraw x="0" y="0" width="450" height="450">
+      <Draw>
+        <Arc centerX="225" centerY="225" width="450" height="450"
+             startAngle="0" endAngle="360">
+          <Fill color="#99000000"/>
+        </Arc>
+      </Draw>
+    </PartDraw>
+
+    <!-- 하단 그라디언트 오버레이 (컴플리케이션 영역) -->
+    <PartDraw x="0" y="280" width="450" height="170">
+      <Draw>
+        <Rectangle x="0" y="0" width="450" height="170">
+          <Fill color="#BB000000"/>
+        </Rectangle>
+      </Draw>
+    </PartDraw>
+
+    <!-- ═══════════════════════════════════════
+         시계판 눈금
+    ═══════════════════════════════════════ -->
+
+    <!-- 12시간 주요 눈금 (4개 방향: 12,3,6,9) -->
+    <PartDraw x="0" y="0" width="450" height="450" alpha="220">
+      <Draw>
+        <!-- 12시 -->
+        <Rectangle x="221" y="42" width="8" height="22" angle="0" pivotX="225" pivotY="225">
+          <Fill color="#FFFFFFFF"/>
+        </Rectangle>
+        <!-- 3시 -->
+        <Rectangle x="221" y="42" width="8" height="22" angle="90" pivotX="225" pivotY="225">
+          <Fill color="#FFFFFFFF"/>
+        </Rectangle>
+        <!-- 6시 -->
+        <Rectangle x="221" y="42" width="8" height="22" angle="180" pivotX="225" pivotY="225">
+          <Fill color="#FFFFFFFF"/>
+        </Rectangle>
+        <!-- 9시 -->
+        <Rectangle x="221" y="42" width="8" height="22" angle="270" pivotX="225" pivotY="225">
+          <Fill color="#FFFFFFFF"/>
+        </Rectangle>
+      </Draw>
+    </PartDraw>
+
+    <!-- 나머지 8개 시 눈금 (가는 선) -->
+    <PartDraw x="0" y="0" width="450" height="450" alpha="160">
+      <Draw>
+        <Rectangle x="222" y="44" width="5" height="14" angle="30"  pivotX="225" pivotY="225"><Fill color="#FFFFFFFF"/></Rectangle>
+        <Rectangle x="222" y="44" width="5" height="14" angle="60"  pivotX="225" pivotY="225"><Fill color="#FFFFFFFF"/></Rectangle>
+        <Rectangle x="222" y="44" width="5" height="14" angle="120" pivotX="225" pivotY="225"><Fill color="#FFFFFFFF"/></Rectangle>
+        <Rectangle x="222" y="44" width="5" height="14" angle="150" pivotX="225" pivotY="225"><Fill color="#FFFFFFFF"/></Rectangle>
+        <Rectangle x="222" y="44" width="5" height="14" angle="210" pivotX="225" pivotY="225"><Fill color="#FFFFFFFF"/></Rectangle>
+        <Rectangle x="222" y="44" width="5" height="14" angle="240" pivotX="225" pivotY="225"><Fill color="#FFFFFFFF"/></Rectangle>
+        <Rectangle x="222" y="44" width="5" height="14" angle="300" pivotX="225" pivotY="225"><Fill color="#FFFFFFFF"/></Rectangle>
+        <Rectangle x="222" y="44" width="5" height="14" angle="330" pivotX="225" pivotY="225"><Fill color="#FFFFFFFF"/></Rectangle>
+      </Draw>
+    </PartDraw>
+
+    <!-- ═══════════════════════════════════════
+         아날로그 시침 (Hour Hand)
+         흰색, 굵고 짧음
+    ═══════════════════════════════════════ -->
+    <PartAnimatedImage x="209" y="105" width="32" height="150"
+                       pivotX="16" pivotY="120" alpha="242">
+      <Variant mode="AMBIENT">
+        <Draw>
+          <Rectangle x="13" y="0" width="6" height="120" rx="3" ry="3">
+            <Fill color="#CCFFFFFF"/>
+          </Rectangle>
+        </Draw>
+      </Variant>
+      <PartDraw x="0" y="0" width="32" height="150">
+        <Draw>
+          <!-- 시침 몸체 -->
+          <Rectangle x="12" y="10" width="8" height="110" rx="4" ry="4">
+            <Fill color="#FFFFFFFF"/>
+          </Rectangle>
+          <!-- 시침 끝 장식 -->
+          <Arc centerX="16" centerY="12" width="16" height="16"
+               startAngle="0" endAngle="360">
+            <Fill color="#FFFFFFFF"/>
+          </Arc>
+        </Draw>
+      </PartDraw>
+      <Transform>
+        <Rotate target="SECONDS_TOTAL" value="0.5"/>
+      </Transform>
+    </PartAnimatedImage>
+
+    <!-- ═══════════════════════════════════════
+         분침 (Minute Hand)
+         흰색, 길고 얇음
+    ═══════════════════════════════════════ -->
+    <PartAnimatedImage x="220" y="65" width="20" height="185"
+                       pivotX="10" pivotY="160" alpha="230">
+      <Variant mode="AMBIENT">
+        <Draw>
+          <Rectangle x="8" y="0" width="4" height="160" rx="2" ry="2">
+            <Fill color="#BBFFFFFF"/>
+          </Rectangle>
+        </Draw>
+      </Variant>
+      <PartDraw x="0" y="0" width="20" height="185">
+        <Draw>
+          <!-- 분침 몸체 -->
+          <Rectangle x="8" y="5" width="5" height="155" rx="2" ry="2">
+            <Fill color="#FFFFFFFF"/>
+          </Rectangle>
+          <!-- 분침 끝 -->
+          <Arc centerX="10" centerY="7" width="10" height="10"
+               startAngle="0" endAngle="360">
+            <Fill color="#FFFFFFFF"/>
+          </Arc>
+        </Draw>
+      </PartDraw>
+      <Transform>
+        <Rotate target="SECONDS_TOTAL" value="0.1"/>
+      </Transform>
+    </PartAnimatedImage>
+
+    <!-- ═══════════════════════════════════════
+         초침 (Second Hand)
+         빨간색, 가늘고 긺
+    ═══════════════════════════════════════ -->
+    <PartAnimatedImage x="222" y="50" width="16" height="200"
+                       pivotX="8" pivotY="175" alpha="255">
+      <Variant mode="AMBIENT">
+        <!-- 절전 모드에서는 초침 숨김 -->
+        <Draw/>
+      </Variant>
+      <PartDraw x="0" y="0" width="16" height="200">
+        <Draw>
+          <!-- 초침 꼬리 (반대쪽) -->
+          <Rectangle x="7" y="168" width="3" height="32" rx="1" ry="1">
+            <Fill color="#FFCC0000"/>
+          </Rectangle>
+          <!-- 초침 몸체 -->
+          <Rectangle x="7" y="0" width="3" height="172" rx="1" ry="1">
+            <Fill color="#FFFF2020"/>
+          </Rectangle>
+        </Draw>
+      </PartDraw>
+      <Transform>
+        <Rotate target="SECONDS" value="6"/>
+      </Transform>
+    </PartAnimatedImage>
+
+    <!-- 중앙 도트 -->
+    <PartDraw x="0" y="0" width="450" height="450">
+      <Draw>
+        <Arc centerX="225" centerY="225" width="16" height="16"
+             startAngle="0" endAngle="360">
+          <Fill color="#FFFFFFFF"/>
+        </Arc>
+        <Arc centerX="225" centerY="225" width="8" height="8"
+             startAngle="0" endAngle="360">
+          <Fill color="#FFFF2020"/>
+        </Arc>
+      </Draw>
+    </PartDraw>
+
+    <!-- ═══════════════════════════════════════
+         컴플리케이션 영역
+    ═══════════════════════════════════════ -->
+
+    <!-- 날짜 표시 -->
+    <PartText x="0" y="295" width="450" height="36" alpha="230">
+      <Text align="CENTER" color="#FFFFFFFF"
+            fontFamily="DEFAULT" fontStyle="NORMAL" size="16" letterSpacing="0.12">
+        <Template>%s · %s %s
+          <Parameter expression="[WEEKDAY_S]"/>
+          <Parameter expression="[MONTH_S]"/>
+          <Parameter expression="[DAY_0]"/>
+        </Template>
+      </Text>
+    </PartText>
+
+    <!-- 구분선 -->
+    <PartDraw x="125" y="332" width="200" height="2">
+      <Draw>
+        <Rectangle x="0" y="0" width="200" height="1">
+          <Fill color="#55FFFFFF"/>
+        </Rectangle>
+      </Draw>
+    </PartDraw>
+
+    <!-- 배터리 아이콘 + 수치 -->
+    <PartText x="60" y="346" width="110" height="24" alpha="210">
+      <Text align="CENTER" color="#FF88FF88"
+            fontFamily="DEFAULT" fontStyle="NORMAL" size="13">
+        <Template>🔋 %s%%
+          <Parameter expression="[BATTERY_PERCENT]"/>
+        </Template>
+      </Text>
+    </PartText>
+
+    <!-- 심박수 -->
+    <PartText x="280" y="346" width="110" height="24" alpha="210">
+      <Text align="CENTER" color="#FFFF8888"
+            fontFamily="DEFAULT" fontStyle="NORMAL" size="13">
+        <Template>❤ %s BPM
+          <Parameter expression="[HEART_RATE]"/>
+        </Template>
+      </Text>
+    </PartText>
+
+    <!-- 걸음수 -->
+    <PartText x="0" y="372" width="450" height="26" alpha="200">
+      <Text align="CENTER" color="#FFAADDFF"
+            fontFamily="DEFAULT" fontStyle="NORMAL" size="13" letterSpacing="0.05">
+        <Template>👟 %s STEPS
+          <Parameter expression="[STEP_COUNT]"/>
+        </Template>
+      </Text>
+    </PartText>
+
+  </Scene>
+</WatchFace>
